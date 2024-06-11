@@ -1,0 +1,42 @@
+.calculator,
+.display,
+.topRow,
+.btn,
+.sideRow,
+.number{
+  border: solid 1px black;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.calculator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  flex-direction: column;
+}
+.display {
+  display: flex;
+  flex-direction: column;
+}
+  
+
+.container {
+  display: flex;
+}
+
+.numberButtons {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.sideRow {
+  display: flex;
+  flex-direction: column;
+}
