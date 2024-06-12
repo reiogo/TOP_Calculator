@@ -10,10 +10,6 @@
 }
 
 .calculator,
-.topRow,
-.btn,
-.sideRow,
-.number,
 .displayScreen {
   border: solid 1px black;
 }
@@ -63,10 +59,16 @@ button {
   height: 120px;
   font-size: 30px;
 }
+.clearBtn,
+.backBtn,
+.sideRow button {
+  background-color: gray;
+}
 .topRow {
   display: flex;
   justify-content: center;
   width: 360px;
+
 }
 .numberButtons {
   display: flex;
