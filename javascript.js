@@ -41,6 +41,27 @@ function operate (argOne, argTwo, operator) {
             break;
         default:
             alert ('Something went wrong');
-    }
+    }}
+
+// Display number
+
+let display_value = 0;
 
 // Number buttons and display.
+function sendToDisplay(event) {
+    if (event.target.getAttribute('class') === 'num') {
+    displayText = 
+        document.querySelector('.displayText');
+    displayText.textContent =
+        event.target.textContent;
+    //Store the display variable.
+    display_value = event.target.textContent;
+    } 
+
+}
+
+numberButtonsContainer = 
+        document.querySelector('.numberButtons');
+numberButtonsContainer.addEventListener('click', sendToDisplay);
+
+//Making the calculator work
