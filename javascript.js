@@ -41,19 +41,15 @@ function operate (argOne, argTwo, operator) {
     switch (operator) {
         case '+': 
             results = add(argOne, argTwo);
-    console.log(results) 
             break;
         case '-': 
             results = subtract(argOne, argTwo);
-    console.log(results) 
             break;
         case 'x': 
             results = multiply(argOne, argTwo);
-    console.log(results) 
             break;
         case '/': 
             results = divide(argOne, argTwo);
-    console.log(results) 
             break;
         default:
             alert ('Something went wrong');
@@ -73,15 +69,15 @@ function sendToDisplay(event) {
 
 
         //Store display variable in the correct argument.
-        if(flag === 'argOne') {
+        if(flag === 'argOne' && argOne.length < 17) {
             argOne += (event.target.textContent);
             displayText.textContent =
                 argOne;
-        } else if (flag === 'argTwo') {
+        } else if (flag === 'argTwo' && argTwo.length < 17) {
             argTwo += (event.target.textContent);
             displayText.textContent =
                 argTwo;
-        } else {
+        } else if (argOne.length < 17 && argTwo.length < 17) {
             argOne += (event.target.textContent);
             displayText.textContent =
                 argOne;
@@ -141,6 +137,7 @@ function equalIsPressed () {
     } else if (argOne !== '' && argTwo !== '' && operatorVariable !== 'cleared') {
         res =
             operate(argOne, argTwo, operatorVariable);
+        res = res.toPrecision(11);
         displayText.textContent = res;
         operatorVariable = 'cleared';
         argOne = res;
