@@ -137,7 +137,9 @@ function equalIsPressed () {
     } else if (argOne !== '' && argTwo !== '' && operatorVariable !== 'cleared') {
         res =
             operate(argOne, argTwo, operatorVariable);
-        res = res.toPrecision(11);
+        if (res.length > 12){
+            res = res.toPrecision(11);
+        }
         displayText.textContent = res;
         operatorVariable = 'cleared';
         argOne = res;
