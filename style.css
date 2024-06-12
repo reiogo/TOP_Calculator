@@ -1,9 +1,20 @@
+/* Overall structure.*/
+.calculator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 510px;
+  flex-direction: column;
+  margin: 40px;
+  padding-bottom: 10px;
+}
+
 .calculator,
-.display,
 .topRow,
 .btn,
 .sideRow,
-.number{
+.number,
+.displayScreen {
   border: solid 1px black;
 }
 
@@ -13,20 +24,59 @@ body{
   justify-content: center;
 
 }
-
-.calculator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  flex-direction: column;
-}
+/* Display */
 .display {
+  width:480px;
+  height: 170px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-  
+.displayScreen {
+  display: flex;
+  flex: 1;
+  margin: 40px 15px 15px 15px;
+  width: 460px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
 
+.displayText {
+  margin: 15px;
+  font-size: 50px;
+}
+
+/* Side container */
+.sideContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 360px;
+}
+
+
+
+/* Buttons */
+button {
+  width: 120px;
+  height: 120px;
+  font-size: 30px;
+}
+.topRow {
+  display: flex;
+  justify-content: center;
+  width: 360px;
+}
+.numberButtons {
+  display: flex;
+  justify-content: center;
+  width: 360px;
+}
+
+
+/* Calculator borders. */
+  
 .container {
   display: flex;
 }

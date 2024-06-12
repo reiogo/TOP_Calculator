@@ -43,4 +43,4 @@ function operate (argOne, argTwo, operator) {
             alert ('Something went wrong');
     }
 
-
+// Number buttons and display.
