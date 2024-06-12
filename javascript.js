@@ -1,8 +1,9 @@
 // Variables for the first number, second number, and operator.
 
-let argOne = 'cleared';
-let argTwo = 'cleared';
+let argOne = '';
+let argTwo = '';
 let operator = '';
+let flag = 'argOne';
 
 
 // Operator variable.
@@ -34,6 +35,8 @@ const divide = function(arg1, arg2){
 function operate (argOne, argTwo, operator) {
 
     let results = 0;
+    argOne = Number(argOne);
+    argTwo = Number(argTwo);
 
     switch (operator) {
         case '+': 
@@ -67,18 +70,22 @@ function sendToDisplay(event) {
 
         displayText = 
             document.querySelector('.displayText');
-        displayText.textContent =
-            event.target.textContent;
 
 
         //Store display variable in the correct argument.
-        if(argOne === 'cleared') {
-            argOne = Number (event.target.textContent);
-        } else if (argTwo === 'cleared') {
-            argTwo = Number (event.target.textContent);
+        if(flag === 'argOne') {
+            argOne += (event.target.textContent);
+            displayText.textContent =
+                argOne;
+        } else if (flag === 'argTwo') {
+            argTwo += (event.target.textContent);
+            displayText.textContent =
+                argTwo;
         } else {
-            argOne = Number (event.target.textContent);
-            argTwo ='cleared';
+            argOne += (event.target.textContent);
+            displayText.textContent =
+                argOne;
+            argTwo ='';
         }
     }
 
@@ -98,6 +105,17 @@ function storeOperator (event) {
 
     if(event.target.getAttribute('class')==='signBtn'){
         operatorVariable = event.target.textContent;
+        if (argOne === '') {
+            flag = 'argOne';
+            clearDisplayTo(operatorVariable);
+
+        } else if (argTwo === '') {
+            flag = 'argTwo';
+            clearDisplayTo(operatorVariable);
+        } else {
+            flag = 'argOne';
+            clearDisplayTo(operatorVariable);
+        }
     }
 }
 
@@ -111,18 +129,25 @@ sideRow.addEventListener('click', storeOperator);
 
 
 // Calculate when equal is clicked.
-
 function equalIsPressed () {
+    
+    let res;
 
-    if (argOne !== 'cleared' && argTwo !== 'cleared' && operatorVariable !== 'cleared') {
     displayText = 
         document.querySelector('.displayText');
-    displayText.textContent = operate(argOne, argTwo, operatorVariable)
-        operatorVariable = 'cleared'
-        argOne = 'cleared'
-        argTwo = 'cleared'
+
+    if (argTwo == 0 && operatorVariable =='/') {
+        displayText.textContent = 'Doesn\'t Work';
+    } else if (argOne !== '' && argTwo !== '' && operatorVariable !== 'cleared') {
+        res =
+            operate(argOne, argTwo, operatorVariable);
+        displayText.textContent = res;
+        operatorVariable = 'cleared';
+        argOne = res;
+        argTwo = '';
         
     }
+
 }
 
 equalSign = document.querySelector('.equalBtn');
@@ -130,4 +155,49 @@ equalSign = document.querySelector('.equalBtn');
 equalSign.addEventListener('click', equalIsPressed);
 
 
+
+//Clear button function.
+function clearButtonClicked () {
+    argOne = '';
+    argTwo = '';
+    operator = '';
+    flag = 'argOne';
+    operatorVariable ='cleared';
+    displayText = document.querySelector('.displayText');
+    displayText.textContent = '0';
+}
+
+//Clear display.
+function clearDisplayTo (str) {
+    displayText = document.querySelector('.displayText');
+    displayText.textContent = str;
+}
+
+
+
+
+clearButton = document.querySelector('.clearBtn');
+clearButton.addEventListener('click', clearButtonClicked);
+
+
+
+//Backspace button
+function backspace () {
+    let returnedText = '';
+    displayText = document.querySelector('.displayText');
+    if (flag == 'argOne') {
+        returnedText = argOne.slice(0, -1);
+        displayText.textContent = returnedText;
+        argOne = returnedText;
+    } else if (flag == 'argTwo') {
+        returnedText = argTwo.slice(0, -1);
+        displayText.textContent = returnedText;
+        argTwo = returnedText;
+    }
+}
+
+
+
+backspaceButton = document.querySelector('.backBtn');
+backspaceButton.addEventListener('click', backspace);
 
