@@ -1,5 +1,10 @@
-# Odin Calculator 
+# Calculator Web App
 
-The Odin Project - Web-based Calculator
+Web-based Calculator App.
 
-source: https://www.theodinproject.com/lessons/foundations-calculator
+Live Demo: https://reiogo.github.io/odin_calculator/
+# Tech Stack
+- HTML, CSS (Flexbox)
+- Javascript
+
+(for learning purposes only)
